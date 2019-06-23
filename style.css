@@ -1,0 +1,58 @@
+body, img, p {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #FEFAEE;
+}
+
+.text-line {
+	color: #A87F22;
+	font-size: 20px;
+	padding-bottom: 15px;
+	text-align: center;
+}
+
+.text-line:first-child {
+	padding-top: 100px;
+}
+
+#cursive-line {
+	color: #2C2E5B;
+	font-family: 'Norican', cursive;
+	font-size: 48px;
+	padding-top: 35px;
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+#bunch-of-leeks {
+	display: block;
+	margin: auto;
+	padding-bottom: 50px;
+	width: 200px;
+}
+
+.text-line:last-of-type {
+	color: #CABC4E;
+}
+
+#grid-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 0 100px;
+}
+
+.play {
+	color: #2201B3;
+	font-size: 32px;
+	padding: 50px 0;
+	text-align: center;
+}
+
+.song-title {
+	color: #A6031D;
+	font-size: 28px;
+	text-align: center;
+}
