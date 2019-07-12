@@ -13,13 +13,10 @@ header {
 }
 
 #back-arrow {
-	color: #FFFFFF;
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
-	font-size: 24px;
-	font-weight: bold;
 	left: 7px;
 	position: absolute;
-	top: 30px;
+	top: 36px;
+	width: 24px;
 }
 
 #trip-type {
