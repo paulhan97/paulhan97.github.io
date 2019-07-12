@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Active Ticket</title>
+
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<header>
+			<div id="back-arrow">&#129120;</div>
+			<p id="trip-type">One Way</p>
+		</header>
+		<section id="color-bar-section">
+			<div id="color-bar-container">
+				<div id="moving-text">
+					<p id="current-time"></p>
+					<p id="current-date"></p>
+				</div>
+				<div class="color-bar one"></div>
+				<div class="color-bar two"></div>
+				<div class="color-bar three"></div>
+			</div>
+			<p id="small-text">Tap to reveal barcode</p>
+			<div id="reveal-qr">&#709;</div>
+		</section>
+		<script src="script.js"></script>
+		<main>
+			<p id="activation-alert">Ticket activated at <span id="two-minute-split">#</span></p>
+			<p id="trip-type-bar">One Way</p>
+			<div id="zone-grid">
+				<div><p id="zone-text">ZONE 3</p></div>
+				<div><div id="zone-marker">3</div></div>
+			</div>
+			<div id="button-grid">
+				<div class="button">Actions</div>
+				<div class="button">Ticket Info</div>
+			</div>
+		</main>
+		<footer></footer>
+	</body>
+</html>
