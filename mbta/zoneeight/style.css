@@ -1,0 +1,233 @@
+body, div, header, p {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #F0F0F0;
+}
+
+header {
+	background-color: #9B1D81;
+	border-bottom: 2.5px solid #86186F;
+}
+
+#back-arrow {
+	left: 7px;
+	position: absolute;
+	top: 36px;
+	width: 24px;
+}
+
+#trip-type {
+	color: #FFFFFF;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 20px;
+	padding-top: 35px;
+	text-align: center;
+}
+
+#color-bar-section {
+	background-color: #FFFFFF;
+	border-bottom: 2.5px solid #D3D3D3;
+	position: relative;
+}
+
+#color-bar-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	padding: 0 20px;
+	padding-top: 12px;
+	position: relative;
+}
+
+#moving-text {
+	animation-direction: alternate;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-name: sidetoside;
+	animation-timing-function: linear;
+	color: #FFFFFF;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 30px;
+	font-weight: bold;
+	left: 21px;
+	letter-spacing: -1px;
+	position: absolute;
+	text-align: center;
+	text-shadow: 0 0 4px #000000, 0 0 4px #000000, 0 0 4px #000000, 0 0 4px #000000;
+	top: 28px;
+}
+
+@keyframes sidetoside {
+	0%		{left: 30px;}
+	100% 	{left: calc(100vw - 200px);}
+}
+
+.color-bar {
+	display: block;
+	height: 100px;
+	width: 100%;
+}
+
+.color-bar.one {
+	animation-direction: alternate;
+	animation-duration: 0.6s;
+	animation-iteration-count: infinite;
+	animation-name: flashone;
+	animation-timing-function: ease-in;
+	background-color: #B0B0B0;
+	border-radius: 5px 0 0 5px;
+}
+
+@keyframes flashone {
+	to {background-color: #E2E2E2;}
+}
+
+.color-bar.two {
+	background-color: #AD859F;
+}
+
+.color-bar.three {
+	animation-direction: alternate;
+	animation-duration: 0.6s;
+	animation-iteration-count: infinite;
+	animation-name: flashtwo;
+	animation-timing-function: ease-in;
+	background-color: #85A7D4;
+	border-radius: 0 5px 5px 0;
+}
+
+@keyframes flashtwo {
+	to {background-color: #D3DFEF;}
+}
+
+#small-text {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 7px 0;
+	text-align: center;
+}
+
+main {
+	padding: 0 15px;
+	padding-top: 45px;
+}
+
+#reveal-qr {
+	background-color: #86186F;
+	border-radius: 0 0 80px 80px;
+	box-shadow: 0 3px 0 #BBBBBB;
+	box-sizing: border-box;
+	color: #FFFFFF;
+	font-family: Courier;
+	font-size: 20px;
+	font-weight: bold;
+	height: 40px;
+	left: calc(50vw - 40px);
+	padding-top: 7px;
+	position: absolute;
+	text-align: center;
+	width: 80px;
+}
+
+#activation-alert {
+	background-color: #ED203D;
+	border-bottom: 2.5px solid #CB3333;
+	border-radius: 4px;
+	color: #FFFFFF;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: 12px;
+	padding: 10px 0;
+	text-align: center;
+}
+
+#two-minute-split {
+	letter-spacing: -1px;
+}
+
+#trip-type-bar {
+	background-color: #FFFFFF;
+	border-bottom: 2.5px solid #D3D3D3;
+	border-radius: 4px;
+	color: #000000;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: 12px;
+	padding: 10px 0;
+	text-align: center;
+}
+
+#zone-grid {
+	background-color: #FFFFFF;
+	border-bottom: 2.5px solid #D3D3D3;
+	border-radius: 4px;
+	display: grid;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	grid-template-columns: 1fr 1fr;
+	margin-bottom: 18px;
+	padding: 15px 10px
+}
+
+#zone-text {
+	color: #000000;
+	font-size: 24px;
+	font-weight: bold;
+	padding-left: 5px;
+	padding-top: 5px;
+}
+
+#zone-marker {
+	border: 10px solid #BEBEBE;
+	border-radius: 125px;
+	box-sizing: border-box;
+	color: #BEBEBE;
+	font-size: 72px;
+	font-weight: bold;
+	height: 125px;
+	margin-left: auto;
+	margin-right: 0;
+	padding-top: 12px;
+	text-align: center;
+	width: 125px;
+}
+
+#button-grid {
+	background-color: #FFFFFF;
+	border-bottom: 2.5px solid #D3D3D3;
+	border-radius: 4px;
+	display: grid;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	grid-template-columns: 1fr 1fr;
+	padding: 10px;
+}
+
+.button {
+	background-color: #9B1D81;
+	border-bottom: 2.5px solid #6F155C;
+	border-radius: 4px;
+	color: #FFFFFF;
+	font-size: 17px;
+	font-weight: bold;
+	padding: 15px 0;
+	text-align: center;
+}
+
+.button:first-child {
+	margin-right: 10px;
+}
+
+footer {
+	background-color: #9B1D81;
+	bottom: 0;
+	height: 40px;
+	left: 0;
+	position: fixed;
+	width: 100%;
+}

@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
+		<title>Active Ticket</title>
+
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<header>
+			<img id="back-arrow" src="left-arrow.png" alt="<">
+			<p id="trip-type">One Way</p>
+		</header>
+		<section id="color-bar-section">
+			<div id="color-bar-container">
+				<div id="moving-text">
+					<p id="current-time"></p>
+					<p id="current-date"></p>
+				</div>
+				<div class="color-bar one"></div>
+				<div class="color-bar two"></div>
+				<div class="color-bar three"></div>
+			</div>
+			<p id="small-text">Tap to reveal barcode</p>
+			<div id="reveal-qr">&#709;</div>
+		</section>
+		<script src="script.js"></script>
+		<main>
+			<p id="activation-alert">Ticket activated at <span id="two-minute-split">#</span></p>
+			<p id="trip-type-bar">One Way</p>
+			<div id="zone-grid">
+				<div><p id="zone-text">ZONE 8</p></div>
+				<div><div id="zone-marker">8</div></div>
+			</div>
+			<div id="button-grid">
+				<div class="button">Actions</div>
+				<div class="button">Ticket Info</div>
+			</div>
+		</main>
+		<footer></footer>
+	</body>
+</html>
