@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>Home</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    #map {
+      height: 100%;
+    }
+    html, body, p, hr {
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+    }
+    #menu-button {
+      left: 10px;
+      position: absolute;
+      top: 10px;
+    }
+    #menu-overlay {
+      display: none;
+    }
+    #black-film {
+      background-color: rgba(0, 0, 0, 0.3);
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+    #menu {
+      background-color: #FFFFFF;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 70%;
+    }
+    #user-profile {
+      background-color: #000000;
+      display: flex;
+      color: #FFFFFF;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.2em;
+      padding: 15px;
+    }
+    #profile-img {
+      border-radius: 50%;
+      width: 40%;
+    }
+    .menu-option {
+      padding: 20px 15px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div id="menu-button">
+    <i class="material-icons" style="font-size: 32px;">menu</i>
+  </div>
+  <div id="menu-overlay">
+    <div id="black-film"></div>
+    <div id="menu">
+      <div id="user-profile">
+        <img id="profile-img" src="images/user-profile.jpg" alt="Profile Photo">
+        <div style="padding-left: 15px;">
+          <p>Paul Han</p>
+          <p>&#9733; 5.00</p>
+        </div>
+      </div>
+      <p class="menu-option">Payment Options</p><hr>
+      <p class="menu-option">Your Photos</p><hr>
+      <p class="menu-option">Help</p><hr>
+      <p class="menu-option">Settings</p><hr>
+    </div>
+  </div>
+  <script>
+    document.getElementById("menu-button").addEventListener("click", () => {
+      document.getElementById("menu-overlay").style.display = "block";
+    });
+
+    document.getElementById("black-film").addEventListener("click", () => {
+      document.getElementById("menu-overlay").style.display = "none";
+    });
+
+    function initMap() {
+      var mapOpt = {
+        zoom: 14,
+        center: {lat:42.3601, lng:-71.0589}, // Default map center is Boston
+        mapTypeControl: false
+      };
+
+      var map = new google.maps.Map(document.getElementById('map'), mapOpt);
+
+      // Create map markers with the following function
+      function addMarker(markerOpt) {
+        var userPositionMarker = new google.maps.Marker({
+          position: markerOpt.coords,
+          map: map
+        });
+
+        if (markerOpt.imgUrl) {
+          userPositionMarker.setIcon(markerOpt.imgUrl);
+        }
+
+        if (markerOpt.goToUrl) {
+          google.maps.event.addListener(userPositionMarker, "click", () => {
+            window.location.href = markerOpt.goToUrl;
+          });
+        }
+      }
+
+      // Set map center to user's position
+      function success(position) {
+        var uLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        map.setCenter(uLatLng);
+
+        addMarker({
+          coords: uLatLng,
+          imgUrl: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+        });
+
+        // Set coord for randomly generated photographer
+        let x = 0.01 * Math.random(),
+          y = 0.01 * Math.random();
+
+        x = position.coords.latitude + ((Math.random() > 0.5) ? x : (-1 * x));
+        y = position.coords.longitude + ((Math.random() > 0.5) ? y : (-1 * y));
+
+        var pLatLng = new google.maps.LatLng(x, y);
+        addMarker({
+          coords: pLatLng,
+          imgUrl: "https://paulhan97.github.io/bokeh/mapicons/photographer-marker.png",
+          goToUrl: "photographer-page.html"
+        });
+      }
+
+      function error() {
+        console.log("Unable to retrieve your location");
+      }
+
+      if (!navigator.geolocation) {
+        console.log("Geolocation is not supported by the browser");
+      } else {
+        navigator.geolocation.getCurrentPosition(success, error);
+      }
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcKboMTJqDScCPtvpLh5CwvCTi4xkitp8&callback=initMap"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, width=device-width">
+	<title>Photographer Page</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <style>
+    html, body, div, hr, p {
+      margin: 0;
+      padding: 0;
+    }
+
+    #back-btn {
+      left: 10px;
+      position: absolute;
+      top: 10px;
+    }
+    
+    #ptgr-name {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    #ptgr-info {
+      display: flex;
+    }
+
+    #ptgr-profile {
+      padding: 15px;
+      width: 30%;
+    }
+
+    #ptgr-profile img {
+      border-radius: 50%;
+      width: 100%;
+    }
+
+    .ptgr-info-text {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 20px;  
+      margin-top: 5px;
+    }
+
+    .ptgr-info-text:first-child {
+      margin-top: 15px;
+    }
+
+    #gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      margin-bottom: 80px;
+    }
+
+    .gallery-item {
+      height: 33.33vw;
+      width: 33.33vw;
+    }
+
+    .gallery-item img {
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    #book-btn {
+      background-color: #FFF;
+      bottom: 0;
+      left: 0;
+      padding: 10px;
+      position: fixed;
+      width: calc(100% - 20px);
+    }
+
+    #book-btn a {
+      background-color: #000;
+      color: #FFF;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      display: block;
+      padding: 10px 0;
+      text-align: center;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+	<div>
+    <div id="ptgr-name">Scott Foster</div>
+    <hr>
+    <div id="back-btn">
+      <a href="index.html">
+        <i class="material-icons" style="color: #000; font-size: 32px;">arrow_back</i>
+      </a>
+    </div>
+  </div>
+  <div id="ptgr-info">
+    <div id="ptgr-profile"><img src="images/ptgr-profile.jpg" alt="Photographer's Profile Picture"></div>
+    <div>
+      <p class="ptgr-info-text"><i class="material-icons" style="font-size: 18px;">collections</i> 14 photos taken</p>
+      <p class="ptgr-info-text"><i class="material-icons" style="font-size: 18px;">schedule</i> 5 min away</p>
+      <p class="ptgr-info-text"><i class="material-icons" style="font-size: 18px;">star</i> 5.00</p>
+      <p class="ptgr-info-text"><i class="material-icons" style="font-size: 18px;">photo_camera</i> Nikon D3500</p>
+    </div>
+  </div>
+  <div id="gallery">
+    <div class="gallery-item"><img src="https://cdn140.picsart.com/278251356026201.jpg?type=webp&to=crop&r=256"></div>
+    <div class="gallery-item"><img src="https://media.farandwide.com/e0/b4/e0b47e158ce646cb9f9b1a6ef613a318.jpeg"></div>
+    <div class="gallery-item"><img src="https://instagram.com/p/6iOfepHjLD/media/?size=l"></div>
+    <div class="gallery-item"><img src="https://i.dailymail.co.uk/i/pix/2017/09/03/23/43E1B14200000578-4849300-image-m-18_1504478012599.jpg"></div>
+    <div class="gallery-item"><img src="https://www.collabary.com/wp-content/uploads/2017/06/Break-The-Instagram-%E2%80%93-How-To-Capture-And-Create-The-Perfect-Influencer-Photo.jpg"></div>
+    <div class="gallery-item"><img src="https://i.insider.com/5dd436cffd9db203551d1ab4?width=1100&format=jpeg&auto=webp"></div>
+    <div class="gallery-item"><img src="https://tul.imgix.net/content/article/Fitspo_Accounts_To_Follow_On_Insta.jpg?auto=format,compress&w=520&h=390&fit=crop"></div>
+    <div class="gallery-item"><img src="https://i.insider.com/5ddd675479d7570e4f50a613?width=1100&format=jpeg&auto=webp"></div>
+    <div class="gallery-item"><img src="https://www.much.com/wp-content/uploads/2017/06/Lilly-Canadian-Instagram.jpg"></div>
+    <div class="gallery-item"><img src="https://www.holland.com/upload_mm/1/a/e/65764_fullimage_malefijtfotografie_%20instagram.jpg"></div>
+    <div class="gallery-item"><img src="https://www.pixaura.com/wp-content/uploads/2019/02/instagram-fun.jpg"></div>
+    <div class="gallery-item"><img src="https://buffer.com/resources/wp-content/uploads/2019/01/nike-instagram-1024x538.jpg"></div>
+    <div class="gallery-item"><img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-629376126-1568210521.png?crop=0.670xw:1.00xh;0.163xw,0.00259xh&resize=480:*"></div>
+    <div class="gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/5b5767a94eddec201ef256b1/1536249987444-FWP15OZCBN1RO4OTSYJO/ke17ZwdGBToddI8pDm48kBhON3Lg1sW7S3THE4kHtSBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxrEj2WbwDGHsbvLpr-2drPp6kiY2WiQg7yg2FqFSx7TCJ4CqUHMsm0LTjuTEU6iuE/Nainoa+Langer+Instagram+for+Filmmakers.png"></div>
+  </div>
+  <div id="book-btn"><a href="confirm-booking.html">BOOK NOW</a></div>
+</body>
+</html>
