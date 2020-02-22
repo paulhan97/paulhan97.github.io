@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1, width=device-width">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <title>Home</title>
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -139,7 +141,7 @@
         var pLatLng = new google.maps.LatLng(x, y);
         addMarker({
           coords: pLatLng,
-          imgUrl: "https://paulhan97.github.io/bokeh/mapicons/photographer-marker.png",
+          imgUrl: "https://paulhan97.github.io/bokeh/pwa/images/camera-icon.png",
           goToUrl: "photographer-page.html"
         });
       }
