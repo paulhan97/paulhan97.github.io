@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photographer Admin Page</title>
+</head>
+<body>
+    <button id="start-session-btn">Start Session</button>
+    <div id="in-session-container">
+        
+        <button id="end-session-btn">End Session</button>
+    </div>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+
+    <!-- Additional Service SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAaOgkMZOfWoF5Y7i7GeWSg71WociPtNUo",
+        authDomain: "bokeh-b8947.firebaseapp.com",
+        databaseURL: "https://bokeh-b8947.firebaseio.com",
+        projectId: "bokeh-b8947",
+        storageBucket: "bokeh-b8947.appspot.com",
+        messagingSenderId: "702458379707",
+        appId: "1:702458379707:web:2e3e24248efc0011bad89e",
+        measurementId: "G-WN09FQ314P"
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      var db = firebase.firestore();
+      var storage = firebase.storage();
+
+      // Check if geolocation is supported
+      if ("geolocation" in navigator) {
+          // Consistently update location in Firestore
+          var id;
+
+          function success(pos) {
+              db.collection("photographers").doc("tiger").set({
+                  lat: pos.coords.latitude,
+                  long: pos.coords.longitude,
+                  inSession: false
+              })
+              .then(() => {
+                  console.log("Document successfully written");
+              })
+              .catch(error => {
+                  console.log(error);
+              });
+          }
+
+          function error(err) {
+              console.warn('ERROR(' + err.code + '): ' + err.message);
+          }
+
+          id = navigator.geolocation.watchPosition(success, error);
+
+          document.getElementById('start-session-btn').addEventListener('click', () => {
+              navigator.geolocation.clearWatch(id);
+              db.collection('photographers').doc('tiger').update({
+                  inSession: true
+              });
+          });
+      } else {
+          console.log("Geolocation is not supported by this browser");
+      }
+
+      document.getElementById('end-session-btn').addEventListener('click', () => {
+          db.collection("photographers").doc('tiger').update({
+              inSession: false
+          });
+
+          // Need to RAF in order for the asychronous Firestore update to complete before refreshing
+          window.requestAnimationFrame(() => {
+              location.reload();
+          });
+      });
+    </script>
+</body>
+</html>
