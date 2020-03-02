@@ -1,15 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Photographer Admin Page</title>
-</head>
-<body>
+
+    <!-- Import Open Sans font from Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        text-align: center;
+      }
+
+      #start-session-btn {
+        background-color: #5f758e;
+        border: 0;
+        border-radius: 5px;
+        color: #fff;
+        font-family: "Open Sans";
+        font-size: 28px;
+        margin-bottom: 10px;
+        margin-top: 50px;
+        padding: 5px 10px;
+      }
+
+      #end-session-btn {
+        background-color: #383961;
+        border: 0;
+        border-radius: 5px;
+        color: #fff;
+        font-family: "Open Sans";
+        font-size: 28px;
+        padding: 5px 10px;
+      }
+    </style>
+  </head>
+  <body>
     <button id="start-session-btn">Start Session</button>
     <div id="in-session-container">
-        
-        <button id="end-session-btn">End Session</button>
+      <button id="end-session-btn">End Session</button>
     </div>
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
@@ -36,53 +68,62 @@
       firebase.analytics();
 
       var db = firebase.firestore();
-      var storage = firebase.storage();
 
       // Check if geolocation is supported
       if ("geolocation" in navigator) {
-          // Consistently update location in Firestore
-          var id;
+        // Consistently update location in Firestore
+        var id;
 
-          function success(pos) {
-              db.collection("photographers").doc("tiger").set({
-                  lat: pos.coords.latitude,
-                  long: pos.coords.longitude,
-                  inSession: false
-              })
-              .then(() => {
-                  console.log("Document successfully written");
-              })
-              .catch(error => {
-                  console.log(error);
-              });
-          }
+        function success(pos) {
+          db.collection("photographers")
+            .doc("tiger")
+            .set({
+              lat: pos.coords.latitude,
+              long: pos.coords.longitude,
+              inSession: false
+            })
+            .then(() => {
+              console.log("Document successfully written");
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }
 
-          function error(err) {
-              console.warn('ERROR(' + err.code + '): ' + err.message);
-          }
+        function error(err) {
+          console.warn("ERROR(" + err.code + "): " + err.message);
+        }
 
-          id = navigator.geolocation.watchPosition(success, error);
+        id = navigator.geolocation.watchPosition(success, error);
 
-          document.getElementById('start-session-btn').addEventListener('click', () => {
-              navigator.geolocation.clearWatch(id);
-              db.collection('photographers').doc('tiger').update({
-                  inSession: true
+        document
+          .getElementById("start-session-btn")
+          .addEventListener("click", () => {
+            navigator.geolocation.clearWatch(id);
+            db.collection("photographers")
+              .doc("tiger")
+              .update({
+                inSession: true
               });
           });
       } else {
-          console.log("Geolocation is not supported by this browser");
+        console.log("Geolocation is not supported by this browser");
       }
 
-      document.getElementById('end-session-btn').addEventListener('click', () => {
-          db.collection("photographers").doc('tiger').update({
+      document
+        .getElementById("end-session-btn")
+        .addEventListener("click", () => {
+          db.collection("photographers")
+            .doc("tiger")
+            .update({
               inSession: false
-          });
+            });
 
           // Need to RAF in order for the asychronous Firestore update to complete before refreshing
           window.requestAnimationFrame(() => {
-              location.reload();
+            location.reload();
           });
-      });
+        });
     </script>
-</body>
+  </body>
 </html>

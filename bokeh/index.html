@@ -1,102 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Request Photographer</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- Import Open Sans font from Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        html, body, div {
-            margin: 0;
-            padding: 0;
-        }
+      html,
+      body,
+      div {
+        margin: 0;
+        padding: 0;
+      }
 
-        #instructions {
-            background-color: #CCC;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-family: 'Open Sans';
-            margin: auto;
-            margin-top: 40vh;
-            padding: 20px;
-            text-align: center;
-            width: 80%;
-        }
+      #instructions {
+        background-color: #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-family: "Open Sans";
+        margin: auto;
+        margin-top: 40vh;
+        padding: 20px;
+        text-align: center;
+        width: 80%;
+      }
 
-        #request-btn-container {
-            bottom: 0;
-            box-sizing: border-box;
-            padding: 10px;
-            position: absolute;
-            text-align: center;
-            width: 100%;
-        }
+      #request-btn-container {
+        bottom: 0;
+        box-sizing: border-box;
+        padding: 10px;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+      }
 
-        #request-btn-container button {
-            background-color: #FF6978;
-            border: 0;
-            color: #FFF;
-            font-family: 'Open Sans';
-            font-size: 24px;
-            font-weight: bold;
-            padding: 10px;
-            width: 100%;
-        }
+      #request-btn-container button {
+        background-color: #ff6978;
+        border: 0;
+        color: #fff;
+        font-family: "Open Sans";
+        font-size: 24px;
+        font-weight: bold;
+        padding: 10px;
+        width: 100%;
+      }
 
-        #loading-overlay {
-            display: none;
-            left: 0;
-            position: absolute;
-            text-align: center;
-            top: 0;
-        }
+      #loading-overlay {
+        display: none;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        top: 0;
+      }
 
-        #black-screen {
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.7);
-            width: 100vw;
-        }
+      #black-screen {
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 100vw;
+      }
 
-        #message-container {
-            background-color: #fff;
-            box-sizing: border-box;
-            left: 15%;
-            padding: 20px;
-            position: absolute;
-            top: 150px;
-            width: 70%;
-        }
+      #message-container {
+        background-color: #fff;
+        box-sizing: border-box;
+        left: 15%;
+        padding: 20px;
+        position: absolute;
+        top: 150px;
+        width: 70%;
+      }
 
-        #loading-icon {
-            width: 40%;
-        }
+      #loading-icon {
+        width: 40%;
+      }
 
-        #loading-message {
-            font-family: 'Open Sans';
-            margin-top: 10px;
-        }
+      #loading-message {
+        font-family: "Open Sans";
+        margin-top: 10px;
+      }
     </style>
-</head>
-<body>
-    <div id="instructions">Click the button below to request a photographer to come to you.</div>
+  </head>
+  <body>
+    <div id="instructions">
+      Click the button below to request a photographer to come to you.
+    </div>
     <div id="request-btn-container">
-        <button id="request-btn">REQUEST</button>
+      <button id="request-btn">REQUEST</button>
     </div>
     <div id="loading-overlay">
-        <div id="black-screen"></div>
-        <div id="message-container">
-            <div>
-                <img id="loading-icon" src="images/loading.png" alt="Loading Icon">
-            </div>
-            <div id="loading-message">Please wait a moment while we look for your photographer</div>
+      <div id="black-screen"></div>
+      <div id="message-container">
+        <div>
+          <img id="loading-icon" src="images/loading.png" alt="Loading Icon" />
         </div>
+        <div id="loading-message">
+          Please wait a moment while we look for your photographer
+        </div>
+      </div>
     </div>
     <script>
-        document.getElementById('request-btn').addEventListener('click', () => {
-            document.getElementById('loading-overlay').style.display = 'block';
-            setTimeout(() => window.location.href = "navigation.html", 2500);
-        });
+      document.getElementById("request-btn").addEventListener("click", () => {
+        document.getElementById("loading-overlay").style.display = "block";
+        setTimeout(() => (window.location.href = "navigation.html"), 2500);
+      });
     </script>
-</body>
+  </body>
 </html>
