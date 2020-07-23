@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Day 1</title>
+    <style>
+      #logout {
+        font-family: sans-serif;
+        font-weight: bold;
+        cursor: pointer;
+        position: fixed;
+        right: 10px;
+        top: 10px;
+      }
+      .container {
+        font-family: sans-serif;
+        margin: auto;
+        width: 60%;
+      }
+      h1 {
+        font-size: 40px;
+      }
+
+      p {
+        font-size: 24px;
+      }
+      .answer {
+        display: block;
+        border: 2px solid #333333;
+        font-size: 18px;
+        font-family: inherit;
+        height: 100px;
+        margin: 20px 0;
+        padding: 10px;
+        width: 100%;
+      }
+      .button {
+        display: inline-block;
+        background-color: #eeeeee;
+        font-weight: bold;
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="logout" class="button">
+      Logout
+    </div>
+    <div class="container">
+      <h1>Beginning With The End</h1>
+      <p>Use the audio player below to listen to a guided exercise.</p>
+      <audio controls>
+        <source src="1-1.mp3" type="audio/mpeg" />
+      </audio>
+      <textarea id="family" class="answer">Log your answer here.</textarea>
+      <p>Continue the exercise below.</p>
+      <audio controls>
+        <source src="1-2.mp3" type="audio/mpeg" />
+      </audio>
+      <textarea id="friend" class="answer">Log your answer here.</textarea>
+      <p>Continue the exercise below.</p>
+      <audio controls>
+        <source src="1-3.mp3" type="audio/mpeg" />
+      </audio>
+      <textarea id="coworker" class="answer">Log your answer here.</textarea>
+      <div style="text-align: center; padding-bottom: 50px;">
+        <div id="next" class="button">Next</div>
+      </div>
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        	     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAaOgkMZOfWoF5Y7i7GeWSg71WociPtNUo",
+        authDomain: "bokeh-b8947.firebaseapp.com",
+        databaseURL: "https://bokeh-b8947.firebaseio.com",
+        projectId: "bokeh-b8947",
+        storageBucket: "bokeh-b8947.appspot.com",
+        messagingSenderId: "702458379707",
+        appId: "1:702458379707:web:2e3e24248efc0011bad89e",
+        measurementId: "G-WN09FQ314P",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          console.log("Logged in");
+        } else {
+          // No user is signed in.
+        }
+      });
+
+      document.getElementById("logout").addEventListener("click", () => {
+        firebase
+          .auth()
+          .signOut()
+          .then(function () {
+            window.location.replace("login.html");
+          })
+          .catch(function (error) {
+            console.log(error.message);
+          });
+      });
+
+      var db = firebase.firestore();
+
+      document.getElementById("next").addEventListener("click", () => {
+        var userId = firebase.auth().currentUser.uid;
+
+        db.collection("users")
+          .doc(userId)
+          .set({
+            family: document.getElementById("family").value,
+            friend: document.getElementById("friend").value,
+            coworker: document.getElementById("coworker").value,
+          })
+          .then(function () {
+            console.log("Document successfully written!");
+            window.location.href = "lesson-one-2.html";
+          })
+          .catch(function (error) {
+            console.error("Error writing document: ", error);
+          });
+      });
+    </script>
+  </body>
+</html>

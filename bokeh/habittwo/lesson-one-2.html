@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Day 1 | Page 2</title>
+    <style>
+      #logout {
+        font-family: sans-serif;
+        font-weight: bold;
+        cursor: pointer;
+        position: fixed;
+        right: 10px;
+        top: 10px;
+      }
+      .container {
+        font-family: sans-serif;
+        margin: auto;
+        width: 60%;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      p {
+        font-size: 24px;
+      }
+      blockquote {
+        background: #f9f9f9;
+        border-left: 10px solid #ccc;
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+        quotes: "\201C""\201D""\2018""\2019";
+      }
+      blockquote:before {
+        color: #ccc;
+        content: open-quote;
+        font-size: 4em;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+      }
+      blockquote p {
+        display: inline;
+      }
+      .quote-owner {
+        font-size: 18px;
+      }
+      .button {
+        display: inline-block;
+        background-color: #eeeeee;
+        padding: 10px 20px;
+      }
+
+      .button a {
+        color: #000000;
+        text-decoration: none;
+        font-size: 24px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="logout" class="button">
+      Logout
+    </div>
+    <div class="container">
+      <blockquote>
+        <p>
+          It is a curious thing, the death of a loved one. We all know that our
+          time in this world is limited, and that eventually all of us will end
+          up underneath some sheet, never to wake up. And yet it is always a
+          surprise when it happens to someone we know. It is like walking up the
+          stairs to your bedroom in the dark, and thinking there is one more
+          stair than there is. Your foot falls down, through the air, and there
+          is a sickly moment of dark surprise as you try and readjust the way
+          you thought of things.
+        </p>
+      </blockquote>
+      <p class="quote-owner">~ Lemony Snicket, <i>Horseradish</i></p>
+      <p style="margin: 50px 0;">
+        It's easy to lose touch of what's important to you in the unpredictable
+        tempo of life. In many cases, all it takes is a little mindfulness of
+        how we want to make best use of the time we have to focus back on the
+        activities that matter most.
+      </p>
+      <div style="text-align: center; padding-bottom: 50px;">
+        <div class="button"><a href="index-2.html">Finish</a></div>
+      </div>
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+            	     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAaOgkMZOfWoF5Y7i7GeWSg71WociPtNUo",
+        authDomain: "bokeh-b8947.firebaseapp.com",
+        databaseURL: "https://bokeh-b8947.firebaseio.com",
+        projectId: "bokeh-b8947",
+        storageBucket: "bokeh-b8947.appspot.com",
+        messagingSenderId: "702458379707",
+        appId: "1:702458379707:web:2e3e24248efc0011bad89e",
+        measurementId: "G-WN09FQ314P",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          console.log("Logged in");
+        } else {
+          // No user is signed in.
+        }
+      });
+
+      document.getElementById("logout").addEventListener("click", () => {
+        firebase
+          .auth()
+          .signOut()
+          .then(function () {
+            window.location.replace("login.html");
+          })
+          .catch(function (error) {
+            console.log(error.message);
+          });
+      });
+    </script>
+  </body>
+</html>

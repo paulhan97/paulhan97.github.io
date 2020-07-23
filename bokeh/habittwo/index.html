@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Home</title>
+    <style>
+      #logout {
+        font-family: sans-serif;
+        font-weight: bold;
+        cursor: pointer;
+        position: fixed;
+        right: 10px;
+        top: 10px;
+      }
+      .container {
+        font-family: sans-serif;
+        margin: auto;
+        width: 60%;
+      }
+      h1 {
+        font-size: 40px;
+      }
+
+      p {
+        font-size: 24px;
+      }
+      a {
+        color: #000000;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .locked {
+        color: #cccccc;
+      }
+      .button {
+        display: inline-block;
+        background-color: #eeeeee;
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="logout" class="button">
+      Logout
+    </div>
+    <div class="container">
+      <h1>Course Progress</h1>
+      <p><a href="lesson-one.html">Lesson 1 - Beginning With The End</a></p>
+      <p class="locked">Lesson 2 - 3 People, 3 Words</p>
+      <p class="locked">Lesson 3 - Living True</p>
+      <p class="locked">Lesson 4 - Determining Your Center</p>
+      <p class="locked">Lesson 5 - Reshaping Your Center With Principles</p>
+      <p class="locked">Lesson 6 - Priorities, Roles and Affirmations</p>
+      <p class="locked">Lesson 7 - The Mission</p>
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        	     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAaOgkMZOfWoF5Y7i7GeWSg71WociPtNUo",
+        authDomain: "bokeh-b8947.firebaseapp.com",
+        databaseURL: "https://bokeh-b8947.firebaseio.com",
+        projectId: "bokeh-b8947",
+        storageBucket: "bokeh-b8947.appspot.com",
+        messagingSenderId: "702458379707",
+        appId: "1:702458379707:web:2e3e24248efc0011bad89e",
+        measurementId: "G-WN09FQ314P",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          console.log("Logged in");
+        } else {
+          // No user is signed in.
+        }
+      });
+
+      document.getElementById("logout").addEventListener("click", () => {
+        firebase
+          .auth()
+          .signOut()
+          .then(function () {
+            window.location.replace("login.html");
+          })
+          .catch(function (error) {
+            console.log(error.message);
+          });
+      });
+    </script>
+  </body>
+</html>

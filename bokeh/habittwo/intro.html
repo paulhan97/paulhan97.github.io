@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Introduction to Compass Training</title>
+    <style>
+      #logout {
+        font-family: sans-serif;
+        font-weight: bold;
+        cursor: pointer;
+        position: fixed;
+        right: 10px;
+        top: 10px;
+      }
+      .container {
+        font-family: sans-serif;
+        margin: auto;
+        width: 60%;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      p {
+        font-size: 24px;
+      }
+
+      .diagram {
+        display: block;
+        height: 400px;
+        margin: 50px auto;
+      }
+
+      .impact {
+        font-size: 40px;
+        margin: 100px;
+        text-align: center;
+      }
+
+      .signature {
+        display: block;
+        border: 2px solid #333333;
+        font-size: 24px;
+        margin: 50px auto;
+        padding: 10px;
+        width: 50%;
+      }
+
+      .button {
+        display: inline-block;
+        background-color: #eeeeee;
+        padding: 10px 20px;
+      }
+
+      .button a {
+        color: #000000;
+        text-decoration: none;
+        font-size: 24px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="logout" class="button">
+      Logout
+    </div>
+    <div class="container">
+      <h1>Welcome to Compass Training</h1>
+      <p>
+        This course is not your typical learning program. There is no particular
+        skill that you will be working to improve although you may find that
+        this course does more for your improvement in a skill than any direct
+        training could.
+      </p>
+      <h1>Conceptual Basis</h1>
+      <img class="diagram" src="001.png" />
+      <p>
+        The shortest path to get to where you would like to go is always a
+        straight line.
+      </p>
+      <img class="diagram" src="002.png" />
+      <p>
+        When you stray off center just 1 degree. It may not seem like much in
+        the grand scheme of things.
+      </p>
+      <img class="diagram" src="003.png" />
+      <p>
+        With a closer look, you will find that you're actually 1,745 steps away
+        from where you wanted to be.
+      </p>
+      <p>
+        We take way more than 10,000 steps in life. Every minute, we take a step
+        to reach our loftiest goals. Assuming a life span of 80 years, that
+        would mean 42,076,800 steps are taken in life. In that scenario, how
+        much of a difference would 1 degree make?
+      </p>
+      <p class="impact">734,369 steps</p>
+      <p>
+        Converting those steps back to minutes would mean that being just 1
+        degree off from following your purpose can lead to 510 days of life
+        wasted.
+      </p>
+      <p>
+        The purpose of this training is to help build your internal compass to
+        make sure that you always stay on a straight path towards your
+        destination. All we ask of you is to make micro-commitments of 10-15
+        minutes every day with consistency. If you agree to those terms, then
+        please sign/type your name in the box below.
+      </p>
+      <input class="signature" type="text" />
+      <div style="text-align: center; padding-bottom: 50px;">
+        <div class="button"><a href="index.html">Go to Dashboard</a></div>
+      </div>
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    	     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAaOgkMZOfWoF5Y7i7GeWSg71WociPtNUo",
+        authDomain: "bokeh-b8947.firebaseapp.com",
+        databaseURL: "https://bokeh-b8947.firebaseio.com",
+        projectId: "bokeh-b8947",
+        storageBucket: "bokeh-b8947.appspot.com",
+        messagingSenderId: "702458379707",
+        appId: "1:702458379707:web:2e3e24248efc0011bad89e",
+        measurementId: "G-WN09FQ314P",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          console.log("Logged in");
+        } else {
+          // No user is signed in.
+        }
+      });
+
+      document.getElementById("logout").addEventListener("click", () => {
+        firebase
+          .auth()
+          .signOut()
+          .then(function () {
+            window.location.replace("login.html");
+          })
+          .catch(function (error) {
+            console.log(error.message);
+          });
+      });
+    </script>
+  </body>
+</html>
