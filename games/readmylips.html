@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Read My Lips</title>
+
+    <style>
+        #main-container {
+            font-family: sans-serif;
+            margin: auto;
+            padding-top: 50px;
+            user-select: none;
+            width: 60vw;
+        }
+        #score-text {
+            font-size: 24px;
+            text-align: center;
+        }
+        #target-word {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 75px;
+        }
+        #button-container {
+            column-gap: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: center;
+            margin-top: 75px;
+        }
+        .button {
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+        }
+        #skip-button {
+            background-color: #CCCCCC;
+        }
+        #confirm-button {
+            background-color: green;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-container">
+        <div id="score-text">Score: <span id="score">0</span></div>
+        <div id="target-word"></div>
+        <div id="button-container">
+            <div class="button" id="skip-button">Skip</div>
+            <div class="button" id="confirm-button">Confirm</div>
+        </div>
+    </div>
+    <script>
+        let wordBank = ["bed", "book", "cake", "car", "dog", "map", "sun", "apple", "class", "dress", "game", "mask", "moon", "pencil", "river", "flower", "rock", "shoe", "snow", "boat", "whale", "summer", "tree"];
+        let usedWords = [];
+        document.getElementById("target-word").innerHTML = wordBank[~~(Math.random() * wordBank.length)];
+
+        function changeScore(changeValue) {
+            let oldScore = parseInt(document.getElementById("score").innerHTML);
+            document.getElementById("score").innerHTML = oldScore + changeValue;
+        }
+
+        function changeWord() {
+            let oldWord = document.getElementById("target-word").innerHTML;
+            wordBank = wordBank.filter(word => word !== oldWord);
+            document.getElementById("target-word").innerHTML = wordBank[~~(Math.random() * wordBank.length)];
+        }
+
+        document.getElementById("skip-button").addEventListener("click", () => {
+            changeScore(-1);
+            changeWord();
+        });
+
+        document.getElementById("confirm-button").addEventListener("click", () => {
+            changeScore(1);
+            changeWord();
+        });
+    </script>
+</body>
+</html>
